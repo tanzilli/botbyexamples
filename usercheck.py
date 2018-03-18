@@ -16,7 +16,7 @@ class Check():
 	otp=-1
 
 	def __init__(self):
-		print "TanzoCheck 0.4 is fired..."
+		print "Usercheck is fired..."
 		if os.path.exists(self.user_file):
 			with open(self.user_file) as json_file:
 				json_data=json.load(json_file)

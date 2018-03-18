@@ -122,11 +122,11 @@ def main():
 	GPIO.setmode(GPIO.BCM)
 	GPIO.setwarnings(False)
 	
-	GPIO.setup(CANCELLO, GPIO.OUT)	
-	GPIO.output(CANCELLO, 0)
+	GPIO.setup(GATE, GPIO.OUT)	
+	GPIO.output(GATE, 0)
 
-	GPIO.setup(TASTO, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-	GPIO.add_event_detect(TASTO, GPIO.FALLING, tasto_handler, 200)	
+	GPIO.setup(SWITCH, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+	GPIO.add_event_detect(SWITCH, GPIO.FALLING, tasto_handler, 200)	
 
 
 	while True:
