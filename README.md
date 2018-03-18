@@ -22,7 +22,7 @@ Very basic Telegram gate remote controller for Raspberry Pi
 	
 ## Links
 
-	* [python-telegram-bot repository](https://github.com/python-telegram-bot/python-telegram-bot)	
-	* [python-telegram-bot documentation](https://python-telegram-bot.readthedocs.io/en/stable/index.html)	
+* [python-telegram-bot repository](https://github.com/python-telegram-bot/python-telegram-bot)	
+* [python-telegram-bot documentation](https://python-telegram-bot.readthedocs.io/en/stable/index.html)	
 	
  
