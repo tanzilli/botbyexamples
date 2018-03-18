@@ -17,8 +17,8 @@ from usercheck import Check
 
 check=Check()
 
-CANCELLO=4
-TASTO=17
+GATE=4
+SWITCH=17
 
 codice="XXX"
 timeout_codice=0
@@ -34,16 +34,16 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 def apri():
-	GPIO.output(CANCELLO, 1)
+	GPIO.output(GATE, 1)
 	time.sleep(2)
-	GPIO.output(CANCELLO, 0)
+	GPIO.output(GATE, 0)
 
 def tasto_handler(channel):
 	print "Premuto tasto locale"
-	GPIO.output(CANCELLO, 1)
-	while GPIO.input(TASTO)==0:
+	GPIO.output(SWITCH, 1)
+	while GPIO.input(SWITCH)==0:
 		pass
-	GPIO.output(CANCELLO, 0)
+	GPIO.output(GATE, 0)
 		
 def cmd_start(bot, update):
 	keyboard = telegram.ReplyKeyboardMarkup([['APRI']])
