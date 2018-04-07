@@ -10,7 +10,7 @@ Very basic Telegram gate remote controller for Raspberry Pi
 
 	git clone https://github.com/python-telegram-bot/python-telegram-bot --recursive
 	cd python-telegram-bot
-	python setup.py install
+	sudo python setup.py install
 	
 	cd
 	git clone https://github.com/tanzilli/simplebot
