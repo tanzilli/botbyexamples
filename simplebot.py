@@ -105,7 +105,7 @@ def main():
 	global check
 	
 	#@acme_simplebot
-	updater = Updater("593165043:AAEmuB3MaUwAfOG3q3IEnhAaOLv3dgTFWgo")	
+	updater = Updater("insert your token here")	
 	dispatcher = updater.dispatcher
 
 	
