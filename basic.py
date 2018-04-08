@@ -86,7 +86,7 @@ def echo(bot, update):
 	saveChatIds()
 
 #Si registra a Telegram con il Token del bot
-updater = Updater("Inserisci il Token")	
+updater = Updater("589601197:AAHQeXuMnl2wEj7GdjNzHF97R-d4R0AIG3w")	
 job_queue = updater.job_queue
 
 dispatcher = updater.dispatcher

@@ -30,8 +30,8 @@ token inside the bot source you are using::
 
 The bot examples are:
 
-* basic.py very basic example that send an alarm to all the Telegram client 
-* simplebot.py simple remote control for your gate
+* __basic.py__ very basic example that send an alarm to all the Telegram client 
+* __gate.py__ simple remote controller for your gate
 
 ## Links
 
