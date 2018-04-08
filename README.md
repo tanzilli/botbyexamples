@@ -11,22 +11,27 @@ Very basic Telegram gate remote controller for Raspberry Pi
 	git clone https://github.com/python-telegram-bot/python-telegram-bot --recursive
 	cd python-telegram-bot
 	sudo python setup.py install
+
+Clone the whole repository with:
 	
 	cd
 	git clone https://github.com/tanzilli/simplebot
 	cd simplebot
 
+or copy only the source you need.
+
 ## Running
 
 Create your bot with Telegram client from <https://telegram.me/BotFather> and replace the
-token inside __simplebot.py__ at line:
+token inside the bot source you are using::
 
-	#@acme_simplebot
-	updater = Updater("593165043:AAEmuB3MaUwAfOG3q3IEnhAaOLv3dgTFWgo")	
 
-Save and launch:
-	
-	python simplebot.py
+	updater = Updater("insert your token here")	
+
+The bot examples are:
+
+* basic.py very basic example that send an alarm to all the Telegram client 
+* simplebot.py simple remote control for your gate
 
 ## Links
 
