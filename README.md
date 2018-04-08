@@ -1,6 +1,6 @@
 # simplebot
 
-Very basic Telegram gate remote controller for Raspberry Pi
+Very basic examples of Telegram bot in Python for Raspberry Pi
 
 ## Installing
 
