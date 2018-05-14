@@ -1,5 +1,7 @@
 # Bot by examples
 
+<img src="https://telegram.org/file/811140058/2/7GzMJk4Ij54/a1649c56fa9f805828">
+
 Examples of Telegram bot written in Python
 
 ## Installing
