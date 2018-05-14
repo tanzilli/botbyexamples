@@ -31,7 +31,8 @@ client then use the token you got inside the bot source example:
 
 The bot examples are:
 
-* [basic.py](/basic.py) A very basic example of Bot that send an alarm to all the Telegram client 
+* [chatid.py](/chatid.py) Example of Bot that send an alarm to all the Telegram client linked 
+* [keyboard.py](/keyboard.py) Example of Bot than controls a led state using a Telegram keyboard
 
 ## Links
 

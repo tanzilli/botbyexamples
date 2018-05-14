@@ -7,9 +7,9 @@ import RPi.GPIO as GPIO
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import telegram,time,os,json
 
-mytoken="your token here"
+mytoken="insert your token here"
 
-#Alarm line (PIO22 pin 15)
+#Alarm line (GPIO 22 pin 15)
 
 Alarm_in=22
 
@@ -75,7 +75,7 @@ def cmd_stop(bot, update):
 def echo(bot, update):
 	print "User:   : [" + update.message.from_user.username + "]"
 	print "Text    : [" + update.message.text + "]"
-	bot.sendMessage(update.message.chat_id, text="Riceived")
+	bot.sendMessage(update.message.chat_id, text="Received: %s" % update.message.text)
 
 	#Save the chad id received to use to send alarm
 	addChatIds(update.message.chat_id)
