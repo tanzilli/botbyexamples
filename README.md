@@ -30,7 +30,6 @@ client then use the token you got inside the bot source example:
 The bot examples are:
 
 * [basic.py](/basic.py) A very basic example of Bot that send an alarm to all the Telegram client 
-* [gate.py](./gate.py) A simple remote controller for your gate
 
 ## Links
 

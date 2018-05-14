@@ -7,28 +7,31 @@ import RPi.GPIO as GPIO
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import telegram,time,os,json
 
-#GPIO usato per generale l'allarme da inviare via Telegram (Pin 15)
-P1=22
+mytoken="your token here"
+
+#Alarm line (PIO22 pin 15)
+
+Alarm_in=22
 
 job_queue=None
 chat_ids=[]
 chat_ids_filename="chat_ids.json"
 alarm_counter=0
 
-#Aggiunge una chat id all'elenco in ram
+#Add a chat id
 def addChatIds(chat_id):
 	global chat_ids
 
 	if chat_id not in chat_ids:
 		chat_ids.append(chat_id)
 
-#Rimuove una chat id all'elenco in ram
+#Delete a chat id
 def removeChatIds(chat_id):
 	global chat_ids
 
 	chat_ids.remove(chat_id)
 
-#Salva l'elenco delle chat_id sul file chat_ids.json
+#Save on chat_ids.json file the chat id list
 def saveChatIds():
 	global chat_ids
 	global chat_ids_filename
@@ -37,7 +40,7 @@ def saveChatIds():
 		json.dump(chat_ids, fp)
 		fp.close()	
 
-#Carica l'elenco delle chat_id dal file chat:ids.json
+#Load from chat_ids.json file the chat id list
 def loadChatIds():
 	global chat_ids
 	global chat_ids_filename
@@ -50,74 +53,67 @@ def loadChatIds():
 		chat_ids=json.load(fp)
 		fp.close()	
 
-#Handler del comando /start ricevuto da Telegram
-#Il comando /start viene inviato quando da cellulare
-#ci si registra ad un bot
+#/start command handler
 def cmd_start(bot, update):
-	bot.sendMessage(update.message.chat_id, text="Welcome message\n")
-	print "Ricevuto /start"
+	bot.sendMessage(update.message.chat_id, text="Welcome !\n")
+	print "Received: /start"
 	
-	#Salva la chat id del messaggio in arrivo per poter
-	#poi usarla per inviare allarmi
+	#Save the chad id received to use to send alarm
 	addChatIds(update.message.chat_id)
 	saveChatIds()
 
-#Handler del comando /stop ricevuto da Telegram
-#Il comando /stop viene inviato quando da cellulare
-#ci si cancella ad un bot
+#/stop command handler
 def cmd_stop(bot, update):
 	bot.sendMessage(update.message.chat_id, text="Bye, bye\n")
-	print "Ricevuto /stop"
+	print "Received: /stop"
 
-	#Cancella la chat id del messaggio in arrivo per poter
-	#evitare di inviare messaggi di allarme in futuro
+	#Delete the chat id from the list to avoid to send alarms
 	removeChatIds(update.message.chat_id)
 	saveChatIds()
 
-#Handler di gestione dei messaggi liberi in arrivo
+#Normal message handler
 def echo(bot, update):
 	print "User:   : [" + update.message.from_user.username + "]"
 	print "Text    : [" + update.message.text + "]"
-	bot.sendMessage(update.message.chat_id, text="Ricevuto")
+	bot.sendMessage(update.message.chat_id, text="Riceived")
 
-	#Salva la chat id del messaggio in arrivo per poter
-	#poi usarla per inviare allarmi
+	#Save the chad id received to use to send alarm
 	addChatIds(update.message.chat_id)
 	saveChatIds()
 
-#Si registra a Telegram con il Token del bot
-updater = Updater("589601197:AAHQeXuMnl2wEj7GdjNzHF97R-d4R0AIG3w")	
+#Open a link to Telegram using the Token Assigned
+updater = Updater(mytoken)	
 job_queue = updater.job_queue
 
 dispatcher = updater.dispatcher
 
-#Registra gli handler
+#Handler definition
 dispatcher.add_handler(CommandHandler("start", cmd_start))
 dispatcher.add_handler(CommandHandler("stop", cmd_stop))
 dispatcher.add_handler(MessageHandler(Filters.text,echo))
 
-# Carica l'elenco delle chat telegram aperte
+# Load the chat id list
 loadChatIds()
 
-# Fa partire il gestore dei messaggi Telegram
+# Start the updater
 update_queue = updater.start_polling()
 print "Started. Type ctrl-C to exit"		
 
-#Configura il pin di allarme (Se a 0 manda l'allarme)
+#Alarm line setup (0=alarm active)
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 GPIO.setup(P1, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
-#Loop infinito 
+#Forever loop
 try:
 	while True:
 
-		#Controlla se e' stato premuto il tasto di allarme 
+		#Check the alarm line
 		if GPIO.input(P1)==0:
 			alarm_counter=alarm_counter+1
-			print "Allarme %d" % alarm_counter
+			print "Alarm # %d !" % alarm_counter
 
-			#Invia l'allarme a tutti i cellulari che si sono collegati al bot
+			#Send the alarm message to all the chat id saved
 			if len(chat_ids)>=0:
 				for chat_id in chat_ids:
 					job_queue.bot.sendMessage(chat_id, text="Allarme # %d!!" % alarm_counter)
