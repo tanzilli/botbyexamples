@@ -102,14 +102,14 @@ print "Started. Type ctrl-C to exit"
 #Alarm line setup (0=alarm active)
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
-GPIO.setup(P1, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(Alarm_in, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 #Forever loop
 try:
 	while True:
 
 		#Check the alarm line
-		if GPIO.input(P1)==0:
+		if GPIO.input(Alarm_in)==0:
 			alarm_counter=alarm_counter+1
 			print "Alarm # %d !" % alarm_counter
 
@@ -118,7 +118,7 @@ try:
 				for chat_id in chat_ids:
 					job_queue.bot.sendMessage(chat_id, text="Allarme # %d!!" % alarm_counter)
 
-			while GPIO.input(P1)==0:
+			while GPIO.input(Alarm_in)==0:
 				time.sleep(0.2)
 				pass
 	
