@@ -1,6 +1,6 @@
-# simplebot
+# Bot by examples
 
-Very basic examples of Telegram bot in Python for Raspberry Pi
+Examples of Telegram bot written in Python
 
 ## Installing
 
@@ -15,23 +15,22 @@ Very basic examples of Telegram bot in Python for Raspberry Pi
 Clone the whole repository with:
 	
 	cd
-	git clone https://github.com/tanzilli/simplebot
-	cd simplebot
+	git clone https://github.com/tanzilli/botbyexamples
+	cd botbyexamples
 
 or copy only the source you need.
 
 ## Running
 
-Create your bot with Telegram client from <https://telegram.me/BotFather> and replace the
-token inside the bot source you are using::
+Create your own bot with <https://telegram.me/BotFather> using your Telegram
+client then use the token you got inside the bot source example:
 
-
-	updater = Updater("insert your token here")	
+	mytoken="token of your bot"	
 
 The bot examples are:
 
-* __basic.py__ very basic example that send an alarm to all the Telegram client 
-* __gate.py__ simple remote controller for your gate
+* [basic.py](/basic.py) A very basic example of Bot that send an alarm to all the Telegram client 
+* [gate.py](./gate.py) A simple remote controller for your gate
 
 ## Links
 
