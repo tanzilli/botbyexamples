@@ -8,26 +8,39 @@ import time
 import random
 import pygal
 
-mytoken="your token here"
+mytoken="token of your bot"
 
 #/start command handler
 def cmd_start(bot, update):
 	print "Received: /start"	
-	bot.sendMessage(update.message.chat_id, text="Random graph...\n")
+	bot.sendMessage(update.message.chat_id, text="Random temp graph...\n")
 
+	# Create a random set of indoor temperatures
+	indoor=[]
+	print "Indoor"
 	for i in range(24):
-		indoor[i]=random.random()*24
+		indoor.append(round(random.random()*5+18,0))
 
+	# Create a random set of outdoor temperatures
+	outdoor=[]
+	print "Outdoor"
+	for i in range(24):
+		outdoor.append(round(random.random()*10+12,0))
+
+
+	# Create the line chart
+	# http://pygal.org/en/stable/documentation/types/line.html	
+	print "Prepare graph"
 	line_chart = pygal.Line()
 	line_chart.title = 'Temperatures'
 	line_chart.x_labels = map(str, range(0, 23))
 	line_chart.add('Indoor', indoor)
-	line_chart.add('Outdoor',[24,23,22,21,20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1])
-	line_chart.render_to_png('graph.png')
+	line_chart.add('Outdoor', outdoor)
+	line_chart.render_to_png('/tmp/graph.png')
 
-	bot.sendPhoto(update.message.chat_id,open('graph.png'))
+	print "Send graph"
+	bot.sendPhoto(update.message.chat_id,photo=open('/tmp/graph.png'))
 	
-
 #Open a link to Telegram using the Token Assigned
 updater = Updater(mytoken)	
 job_queue = updater.job_queue

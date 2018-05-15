@@ -29,14 +29,21 @@ client then use the token you got inside the bot source example:
 
 	mytoken="token of your bot"	
 
-Bot examples are:
+### Bot examples
 
-* [chatid.py](/chatid.py) Example of Bot that send an alarm to all the Telegram client linked 
-* [keyboard.py](/keyboard.py) Example of Bot than controls a led state using a Telegram keyboard
+Example of Bot that send an alarm to all the Telegram client linked 
 
-Generate a graph and send it as a photo:
+* [chatid.py](/chatid.py) 
 
-Install these packages:
+Example of Bot than controls a led state using a Telegram keyboard
+
+* [keyboard.py](/keyboard.py) 
+
+Example of Bot than send a graph
+
+* [graph.py](/graph.py) Send a /start command to get a random graph
+
+To use this example install these packages:
 
 	sudo apt-get install python-pip
 	sudo pip install pygal
@@ -44,10 +51,6 @@ Install these packages:
 	sudo apt-get install python-cairosvg
 	sudo apt-get install python-lxml
 	sudo apt-get install python-cssselect
-
-* [graph.py](/graph.py) Send a /start command to get a random graph
-
-
 
 ## Links
 
