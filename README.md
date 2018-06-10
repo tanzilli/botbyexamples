@@ -41,7 +41,12 @@ Example of Bot than controls a led state using a Telegram keyboard
 
 Example of Bot than send a graph
 
-* [graph.py](/graph.py) Send a /start command to get a random graph
+* [graph.py](/graph.py) CHat a __/start__ from your phone to get a random graph
+
+Example of Bot that receive a video and shows it on 
+a RGB ld Panel using the [HAT-A3 adapter](https://www.acmesystems.it/HAT-A3):
+
+* [video_on_hat_a3.py](/video_on_hat_a3.py) 
 
 To use this example install these packages:
 
