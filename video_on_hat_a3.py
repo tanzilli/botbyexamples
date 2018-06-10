@@ -8,7 +8,7 @@ from telegram import ReplyKeyboardMarkup
 import time
 import os
 
-mytoken="insert your token here"
+mytoken="token of your bot"
 
 #/start command handler
 def cmd_start(bot, update):
@@ -26,7 +26,7 @@ def echo(bot, update):
 	video_file = bot.get_file(update.message.video.file_id)
 	video_file.download('video.mp4')
 
-	os.system("sudo ~/rpi-rgb-led-matrix/utils/video-viewer --led-chain=1 --led-parallel=1  video.mp4");
+	os.system("sudo ~/rpi-rgb-led-matrix/utils/video-viewer --led-chain=5 --led-parallel=3  --led-pixel-mapper='U-mapper;Rotate:270' video.mp4");
 
 #Open a link to Telegram using the Token Assigned
 updater = Updater(mytoken)	
