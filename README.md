@@ -43,6 +43,15 @@ Example of Bot than send a graph
 
 * [graph.py](/graph.py) CHat a __/start__ from your phone to get a random graph
 
+To use this example install these packages:
+
+	sudo apt-get install python-pip
+	sudo pip install pygal
+	sudo pip install tinycss
+	sudo apt-get install python-cairosvg
+	sudo apt-get install python-lxml
+	sudo apt-get install python-cssselect
+
 Example of Bot that receive a video and shows it on 
 a RGB led Panel using the [HAT-A3 adapter](https://www.acmesystems.it/HAT-A3):
 
@@ -52,14 +61,7 @@ To rotate the video change this line:
 
 	os.system("sudo ~/rpi-rgb-led-matrix/utils/video-viewer --led-chain=5 --led-parallel=3 --led-pixel-mapper='U-mapper;Rotate:270' video.mp4");
 
-To use this example install these packages:
 
-	sudo apt-get install python-pip
-	sudo pip install pygal
-	sudo pip install tinycss
-	sudo apt-get install python-cairosvg
-	sudo apt-get install python-lxml
-	sudo apt-get install python-cssselect
 
 ## Links
 
