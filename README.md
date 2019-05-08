@@ -7,12 +7,9 @@ Examples of Telegram bot written in Python
 ## Installing
 
 	sudo apt-get update
-	sudo apt-get install python-setuptools
+	sudo apt-get install python-pip
+	sudo apt-get install build-essential libssl-dev libffi-dev python-dev
 	sudo apt-get install git
-
-	git clone https://github.com/python-telegram-bot/python-telegram-bot --recursive
-	cd python-telegram-bot
-	sudo python setup.py install
 
 Clone the whole repository with:
 	
